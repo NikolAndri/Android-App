@@ -2,6 +2,7 @@ package com.example.bmi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 float weight = Float.parseFloat(weightVal);
                 float bmi = calBMI(height, weight);
 
-                Toast.makeText(MainActivity.this, String.valueOf(bmi) + " " + gender, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                intent.putExtra("bmi", bmi);
+                intent.putExtra("gender", gender);
+                startActivity(intent);
 
             }
         });
